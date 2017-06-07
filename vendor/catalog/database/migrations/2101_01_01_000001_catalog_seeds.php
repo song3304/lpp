@@ -80,6 +80,22 @@ class CatalogSeeds extends Migration
 			\App\Permission::import([
 				'catalog' => '系统分类',
 			]);
+			foreach([
+			    'catalog' => '系统分类'
+			] as $k => $v) {
+			    foreach([
+			        'view' => '查看',
+			        'create' => '新建',
+			        'edit' => '编辑',
+			        'destroy' => '删除',
+			        'export' => '导出'
+			    ] as $k1 => $v1) {
+			        \App\Permission::create([
+			            'name' => $k.'.'.$k1,
+			            'display_name' => '允许'.$v1.$v,
+			        ]);
+			    }
+			}
 			\App\Role::findByName('super')->perms()->sync(\App\Permission::all());
 
 			\Illuminate\Database\Eloquent\Model::unguard(false);

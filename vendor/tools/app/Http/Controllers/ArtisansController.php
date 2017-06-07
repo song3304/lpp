@@ -13,7 +13,7 @@ class ArtisansController extends Controller {
 
 	public function index()
 	{
-		return $this->view('tools::system.artisans');
+		//return $this->view('tools::system.artisans');
 	}
 
 	public function consoleQuery(Request $request)

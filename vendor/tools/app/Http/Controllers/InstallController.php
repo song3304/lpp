@@ -15,7 +15,7 @@ class InstallController extends Controller {
 		$this->_path = preg_replace('#[/\\\\]+#', '/', dirname($_SERVER['SCRIPT_NAME']));
 		$this->_url = get_current_url(HTTP_URL_SCHEME | HTTP_URL_PATH | HTTP_URL_PATH);
 
-		return $this->view('tools::system.install');
+		//return $this->view('tools::system.install');
 	}
 
 	public function saveQuery(Request $request)

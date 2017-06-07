@@ -78,7 +78,7 @@ class Results extends Base
 		$obj = new self();
 		$obj->fromXml($xml);
 		//fix bug 2015-06-29
-		if ($obj->values['return_code'] == 'SUCCESS')
+		if (isset($obj->values['return_code']) && $obj->values['return_code'] == 'SUCCESS')
 			$noCheckSign&&$obj->CheckSign($api->mchkey);
 		return $obj->getValues();
 	}

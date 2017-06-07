@@ -10,7 +10,7 @@ use Addons\Core\Http\OutputResponse;
 use Lang, Crypt, Agent, Image, Session, Auth;
 class AttachmentController extends Controller {
 
-	public $permissions = ['uploaderQuery,avatarUploadQuery,fullavatarQuery,kindeditorUploadQuery,ueditorUploadQuery,dataurlUploadQuery,editormdUploadQuery,hashQuery' => 'attachment.create'];
+	//public $permissions = ['uploaderQuery,avatarUploadQuery,fullavatarQuery,kindeditorUploadQuery,ueditorUploadQuery,dataurlUploadQuery,editormdUploadQuery,hashQuery' => 'attachment.create'];
 
 	private $model;
 	public function __construct()

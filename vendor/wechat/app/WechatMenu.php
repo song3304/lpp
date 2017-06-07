@@ -1,7 +1,7 @@
 <?php
 namespace Plugins\Wechat\App;
 
-use App\Tree;
+use Addons\Core\Models\Tree;
 
 class WechatMenu extends Tree{
 	protected $guarded = ['id'];

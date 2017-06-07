@@ -32,8 +32,10 @@ class AccountController extends Controller
 
 	public function data(Request $request)
 	{
+	    $is_admin = $request->user()->hasRole('super');
 		$account = new WechatAccount;
 		$builder = $account->newQuery()->withCount(['users', 'depots', 'messages']);
+		if(!$is_admin) $builder = $builder->where('id',$request->user()->getKey());
 		$total = $this->_getCount($request, $builder, FALSE);
 		$data = $this->_getData($request, $builder);
 		$data['recordsTotal'] = $total;
@@ -56,8 +58,10 @@ class AccountController extends Controller
 		return '';
 	}
 
-	public function create()
+	public function create(Request $request)
 	{
+	    $account = WechatAccount::find($request->user()->getKey());
+	    if (!empty($account))  return $this->edit($account->getKey());
 		$keys = 'name,description,wechat_type,account,appid,appsecret,token,encodingaeskey,qr_aid,mchid,mchkey,sub_mch_id';
 		$this->_data = [];
 		$this->_validates = $this->getScriptValidate('wechat-account.store', $keys);
@@ -69,7 +73,7 @@ class AccountController extends Controller
 		$keys = 'name,description,wechat_type,account,appid,appsecret,token,encodingaeskey,qr_aid,mchid,mchkey,sub_mch_id';
 		$data = $this->autoValidate($request, 'wechat-account.store', $keys);
 
-		WechatAccount::create($data);
+		WechatAccount::create($data+['id'=>$request->user()->getKey()]);
 		return $this->success('', url('admin/wechat/account'));
 	}
 
