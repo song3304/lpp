@@ -77,9 +77,9 @@ class CatalogSeeds extends Migration
 			\App\Catalog::import($status, \App\Catalog::findByName('status'));
 
 			//添加权限
-			\App\Permission::import([
-				'catalog' => '系统分类',
-			]);
+// 			\App\Permission::import([
+// 				'catalog' => '系统分类',
+// 			]);
 			foreach([
 			    'catalog' => '系统分类'
 			] as $k => $v) {
