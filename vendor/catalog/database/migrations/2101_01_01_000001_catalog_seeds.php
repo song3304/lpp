@@ -73,8 +73,8 @@ class CatalogSeeds extends Migration
 			$status = [
 			];
 
-			\Plugins\Catalog\App::import($fields, \App\Catalog::findByName('fields'));
-			\Plugins\Catalog\App::import($status, \App\Catalog::findByName('status'));
+			\Plugins\Catalog\App\Catalog::import($fields, \App\Catalog::findByName('fields'));
+			\Plugins\Catalog\App\Catalog::import($status, \App\Catalog::findByName('status'));
 
 			//添加权限
 // 			\App\Permission::import([

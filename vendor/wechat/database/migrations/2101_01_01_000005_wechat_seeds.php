@@ -53,7 +53,7 @@ class WechatSeeds extends Migration
 				],
 			];
 
-			\Plugins\Catalog\App::import($fields, \App\Catalog::findByName('fields'));
+			\Plugins\Catalog\App\Catalog::import($fields, \App\Catalog::findByName('fields'));
 
 			//添加权限
 // 			\App\Permission::import([
